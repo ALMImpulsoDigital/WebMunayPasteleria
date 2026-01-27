@@ -1,0 +1,453 @@
+/* =========================
+   Munay Admin UI (calma + foco)
+   ========================= */
+
+:root {
+  --munay-bg: #f6f2ee;            /* arena suave */
+  --munay-surface: #ffffff;       /* cards */
+  --munay-surface-2: #fff7f6;     /* rosita muy leve */
+  --munay-line: #efd6db;          /* borde suave */
+  --munay-text: #2b2524;          /* texto principal */
+  --munay-muted: #6e5b5f;         /* texto secundario */
+  --munay-primary: #c06a7c;       /* rosa viejo Munay */
+  --munay-primary-2: #b35e70;     /* hover */
+  --munay-accent: #ead7c6;        /* arena acento */
+  --munay-shadow: 0 18px 40px rgba(40, 20, 25, 0.08);
+
+  --radius-lg: 18px;
+  --radius-md: 12px;
+  --radius-sm: 10px;
+
+  --focus: 0 0 0 4px rgba(192, 106, 124, 0.18);
+}
+
+/* Base container */
+.adminPage {
+  min-height: 100vh;
+  padding: 24px 16px;
+  background:
+    radial-gradient(900px 400px at 15% 10%, rgba(192, 106, 124, 0.10), transparent 60%),
+    radial-gradient(900px 400px at 90% 0%, rgba(234, 215, 198, 0.35), transparent 55%),
+    var(--munay-bg);
+  color: var(--munay-text);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+/* Layout shell (login) */
+.adminShell {
+  max-width: 420px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 48px); /* resta el padding del adminPage */
+}
+
+.adminLoginCard {
+  width: 100%;
+  max-width: 420px;
+}
+
+/* Ajustes responsive suaves */
+@media (max-width: 480px) {
+  .adminShell {
+    padding: 0 4px;
+  }
+
+  .adminLoginCard {
+    padding: 16px;
+  }
+}
+
+/* Login card */
+.adminLoginCard,
+.adminCard {
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(239, 214, 219, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: var(--radius-lg);
+  padding: 18px;
+  box-shadow: var(--munay-shadow);
+}
+
+@media (min-width: 520px) {
+  .adminLoginCard,
+  .adminCard {
+    padding: 22px;
+  }
+}
+
+.adminLoginHeader {
+  margin-bottom: 14px;
+}
+
+.adminBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  font-size: 0.9rem;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(234, 215, 198, 0.55);
+  border: 1px solid rgba(239, 214, 219, 0.85);
+  width: fit-content;
+}
+
+.adminTitle {
+  margin: 10px 0 6px;
+  font-size: 1.35rem;
+  letter-spacing: -0.2px;
+}
+
+.adminSubtitle {
+  margin: 0;
+  color: var(--munay-muted);
+  line-height: 1.35;
+  font-size: 0.98rem;
+}
+
+/* Form */
+.adminForm {
+  display: grid;
+  gap: 12px;
+}
+
+.adminLabel {
+  display: grid;
+  gap: 7px;
+  font-size: 0.95rem;
+  color: var(--munay-text);
+}
+
+.adminInput {
+  width: 100%;
+  padding: 12px 12px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--munay-line);
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--munay-text);
+  outline: none;
+  transition: box-shadow 0.15s ease, border-color 0.15s ease, transform 0.12s ease;
+}
+
+.adminInput::placeholder {
+  color: rgba(110, 91, 95, 0.55);
+}
+
+.adminInput:focus {
+  box-shadow: var(--focus);
+  border-color: rgba(192, 106, 124, 0.55);
+}
+
+.adminAlert {
+  background: rgba(255, 232, 234, 0.75);
+  border: 1px solid rgba(204, 86, 108, 0.25);
+  color: #8a2e43;
+  padding: 10px 12px;
+  border-radius: var(--radius-md);
+  font-size: 0.95rem;
+}
+
+/* Buttons */
+.adminBtnPrimary {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(192, 106, 124, 0.35);
+  background: linear-gradient(180deg, rgba(192, 106, 124, 1), rgba(179, 94, 112, 1));
+  color: #fff;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+  cursor: pointer;
+  transition: transform 0.12s ease, filter 0.15s ease, box-shadow 0.15s ease;
+  box-shadow: 0 12px 24px rgba(192, 106, 124, 0.22);
+}
+
+.adminBtnPrimary:hover {
+  filter: brightness(1.02);
+  transform: translateY(-1px);
+}
+
+.adminBtnPrimary:active {
+  transform: translateY(0px);
+}
+
+.adminBtnPrimary:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.adminBtnGhost {
+  padding: 10px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(239, 214, 219, 0.95);
+  color: var(--munay-text);
+  cursor: pointer;
+  font-weight: 700;
+  transition: box-shadow 0.15s ease, transform 0.12s ease, background 0.15s ease;
+}
+
+.adminBtnGhost:hover {
+  box-shadow: 0 10px 22px rgba(40, 20, 25, 0.08);
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.82);
+}
+
+.adminBtnGhost:active {
+  transform: translateY(0px);
+}
+
+.adminHint {
+  margin: 4px 0 0;
+  font-size: 0.9rem;
+  color: rgba(110, 91, 95, 0.75);
+}
+
+
+/* Generic texts */
+.adminText {
+  color: var(--munay-text);
+  padding: 16px;
+}
+
+.adminErrorText {
+  color: #9a2f46;
+  padding: 16px;
+  font-weight: 700;
+}
+
+/* Topbar (pedidos) */
+.adminTopbar {
+  max-width: 1200px;
+  margin: 0 auto 14px;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.adminTopbar .adminTitle {
+  margin-top: 0;
+}
+
+/* Stats */
+.adminStats {
+  max-width: 1200px;
+  margin: 0 auto 14px;
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (min-width: 720px) {
+  .adminStats {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.adminStatCard {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(239, 214, 219, 0.85);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  box-shadow: 0 10px 24px rgba(40, 20, 25, 0.05);
+}
+
+.adminStatLabel {
+  color: rgba(110, 91, 95, 0.85);
+  font-size: 0.9rem;
+}
+
+.adminStatValue {
+  font-size: 1.35rem;
+  font-weight: 900;
+  letter-spacing: -0.3px;
+  margin-top: 2px;
+}
+
+/* Table wrapper */
+.adminTableWrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow-x: auto;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(239, 214, 219, 0.85);
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: var(--munay-shadow);
+}
+
+/* Table */
+.adminTable {
+  width: 100%;
+  min-width: 920px; /* mantiene estructura en desktop, y hace scroll en mobile */
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.adminTable thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  text-align: left;
+  font-size: 1.50rem;
+  color: rgba(43, 37, 36, 0.9);
+  background: linear-gradient(180deg, rgba(255, 228, 236, 0.9), rgba(246, 237, 240, 0.85));
+  border-bottom: 1px solid rgba(239, 214, 219, 1);
+  padding: 12px 12px;
+  white-space: nowrap;
+}
+
+.adminTable tbody tr {
+  background: rgba(255, 255, 255, 0.9);
+  transition: background 0.12s ease;
+}
+
+.adminTable tbody tr:nth-child(2n) {
+  background: rgba(255, 247, 246, 0.65);
+}
+
+.adminTable tbody tr:hover {
+  background: rgba(234, 215, 198, 0.18);
+}
+
+.adminTable .cell {
+  border-bottom: 1px solid rgba(239, 214, 219, 0.7);
+  padding: 12px 12px;
+  vertical-align: top;
+  font-size: 0.95rem;
+}
+
+.strong {
+  font-weight: 900;
+}
+
+.muted {
+  color: rgba(110, 91, 95, 0.9);
+  line-height: 1.35;
+}
+
+.money {
+  font-weight: 900;
+  letter-spacing: 0.2px;
+}
+
+/* Select */
+.adminSelect {
+  padding: 10px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(239, 214, 219, 1);
+  background: rgba(255, 255, 255, 0.9);
+  outline: none;
+  cursor: pointer;
+  transition: box-shadow 0.15s ease, border-color 0.15s ease;
+  font-weight: 700;
+}
+
+.adminSelect:focus {
+  box-shadow: var(--focus);
+  border-color: rgba(192, 106, 124, 0.55);
+}
+
+/* Estado pill */
+.estadoWrap {
+  display: grid;
+  gap: 8px;
+  align-items: start;
+}
+
+.estadoPill {
+  display: inline-flex;
+  width: fit-content;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 900;
+  border: 1px solid rgba(239, 214, 219, 0.9);
+}
+
+/* status colors (soft) */
+.st-pendiente {
+  background: rgba(234, 215, 198, 0.45);
+}
+
+.st-pagado {
+  background: rgba(207, 232, 212, 0.55);
+}
+
+.st-preparacion {
+  background: rgba(255, 231, 195, 0.65);
+}
+
+.st-listo {
+  background: rgba(220, 235, 255, 0.6);
+}
+
+.st-entregado {
+  background: rgba(210, 245, 238, 0.55);
+}
+
+.st-cancelado {
+  background: rgba(255, 220, 226, 0.6);
+}
+
+/* Pago pill */
+.pillPago {
+  display: inline-flex;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(239, 214, 219, 0.9);
+  background: rgba(255, 255, 255, 0.75);
+  font-weight: 800;
+  font-size: 0.85rem;
+}
+
+/* Detalle items */
+.detalleItems {
+  display: grid;
+  gap: 6px;
+}
+
+.detalleItem {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 8px;
+  align-items: baseline;
+  padding: 8px 10px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(239, 214, 219, 0.75);
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.detalleQty {
+  font-weight: 900;
+  color: rgba(43, 37, 36, 0.9);
+}
+
+.detalleName {
+  color: rgba(43, 37, 36, 0.95);
+}
+
+.detallePrice {
+  font-weight: 900;
+  color: rgba(110, 91, 95, 0.95);
+}
+
+.adminNotas {
+  margin-top: 10px;
+  padding: 10px 12px;
+  border-radius: var(--radius-md);
+  background: rgba(234, 215, 198, 0.18);
+  border: 1px solid rgba(239, 214, 219, 0.75);
+  color: rgba(110, 91, 95, 0.95);
+  line-height: 1.4;
+}
+
+.adminNotas span {
+  font-weight: 900;
+}

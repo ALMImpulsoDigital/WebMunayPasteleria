@@ -1,0 +1,114 @@
+/* src/styles/categoriaCard.css */
+
+:root {
+  --munay-surface: #fff7f9;
+  --munay-border: #f3c5cd;
+  --munay-text: #143a35;
+  --munay-muted: rgba(20, 58, 53, 0.75);
+
+  --munay-pink-btn: #c96b84;
+  --munay-mint-btn: #88d6d1;
+}
+
+.cat-card {
+  border: 1px solid var(--munay-border);
+  border-radius: 14px;
+  padding: 1rem;
+  background: var(--munay-surface);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+
+  width: 100%;
+}
+
+.cat-card__img {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  border-radius: 12px;
+  display: block;
+  margin-bottom: 0.35rem;
+}
+
+.cat-card__title {
+  margin: 0.1rem 0 0;
+  color: var(--munay-text);
+  font-size: 1.05rem;
+  line-height: 1.2;
+}
+
+.cat-card__desc {
+  margin: 0;
+  color: var(--munay-muted);
+  font-size: 0.92rem;
+  line-height: 1.45;
+
+  display: -webkit-box;
+-webkit-box-orient: vertical;
+-webkit-line-clamp: 3;
+line-clamp: 3; /* propiedad estándar futura */
+overflow: hidden;
+
+}
+
+.cat-card__actions {
+  margin-top: 0.35rem;
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+/* Link estilo botón */
+.btn-soft-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+
+  padding: 0.5rem 0.95rem;
+  border-radius: 10px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+
+  transition: transform 0.12s ease;
+}
+
+.btn-soft-link:hover {
+  transform: translateY(-1px);
+}
+
+.btn-soft-link--mint {
+  background: var(--munay-mint-btn);
+  color: #0d2b28;
+}
+
+/* Reutilizamos la clase de botones de cookieCard.css si está cargada.
+   Si no querés depender de eso, duplico estilos acá también. */
+
+/* Mobile */
+@media (max-width: 520px) {
+  .cat-card {
+    padding: 0.9rem;
+    border-radius: 12px;
+  }
+
+  .cat-card__img {
+    height: 200px;
+  }
+
+  .btn-soft,
+  .btn-soft-link {
+    width: 100%;
+  }
+}
+
+.cat-card {
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+

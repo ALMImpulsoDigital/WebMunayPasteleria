@@ -1,0 +1,236 @@
+/* src/styles/carrito.css */
+
+:root {
+  --munay-pink: #f0c8c7;
+  --munay-surface: #fff7f9;
+  --munay-border: #f3c5cd;
+  --munay-text: #143a35;
+  --munay-muted: rgba(20, 58, 53, 0.75);
+}
+
+.cart-page {
+  background: var(--munay-pink);
+  padding: 2.2rem 0 3rem;
+}
+
+.cart-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.2rem;
+}
+
+.cart-header {
+  text-align: center;
+  margin-bottom: 1.4rem;
+}
+
+.cart-title {
+  margin: 0;
+  color: var(--munay-text);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: clamp(1.8rem, 3.6vw, 2.6rem);
+}
+
+.cart-subtitle {
+  margin: 0.7rem auto 0;
+  max-width: 760px;
+  color: var(--munay-muted);
+  letter-spacing: 0.04em;
+  line-height: 1.5;
+}
+
+.cart-error {
+  background: rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(200, 60, 90, 0.25);
+  color: #a52345;
+  padding: 0.8rem 1rem;
+  border-radius: 12px;
+  max-width: 820px;
+  margin: 0 auto 1rem;
+}
+
+.cart-empty {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(20, 58, 53, 0.12);
+  color: var(--munay-text);
+  padding: 1rem 1.2rem;
+  border-radius: 12px;
+  max-width: 520px;
+  margin: 1rem auto 0;
+}
+
+/* Layout 2 columnas */
+.cart-layout {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 1.2rem;
+  align-items: start;
+}
+
+.cart-list {
+  background: rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(20, 58, 53, 0.12);
+  border-radius: 14px;
+  padding: 1rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+}
+
+.cart-item {
+  display: grid;
+  grid-template-columns: 80px 1fr auto;
+  gap: 0.9rem;
+  align-items: center;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid rgba(20, 58, 53, 0.12);
+}
+
+.cart-item:last-child {
+  border-bottom: none;
+}
+
+.cart-item__img {
+  width: 80px;
+  height: 80px;
+  border-radius: 12px;
+  object-fit: cover;
+  display: block;
+}
+
+.cart-item__name {
+  color: var(--munay-text);
+}
+
+.cart-item__price {
+  margin: 0.2rem 0 0.45rem;
+  color: var(--munay-muted);
+}
+
+.cart-item__qty {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.cart-item__label {
+  color: var(--munay-muted);
+  font-size: 0.9rem;
+}
+
+.cart-item__input {
+  width: 70px;
+  padding: 0.35rem 0.5rem;
+  border-radius: 10px;
+  border: 1px solid rgba(20, 58, 53, 0.18);
+  outline: none;
+}
+
+.cart-item__remove {
+  border: none;
+  background: transparent;
+  color: #c96b84;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.cart-item__subtotal {
+  font-weight: 800;
+  color: #2a2a2a;
+}
+
+.cart-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.8rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid rgba(20, 58, 53, 0.18);
+  color: var(--munay-text);
+  letter-spacing: 0.02em;
+}
+
+/* Form */
+.cart-form {
+  background: var(--munay-surface);
+  border: 1px solid var(--munay-border);
+  border-radius: 14px;
+  padding: 1rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+}
+
+.cart-form__title {
+  margin: 0 0 0.8rem;
+  color: var(--munay-text);
+}
+
+.cart-field {
+  display: grid;
+  gap: 0.35rem;
+  margin-bottom: 0.75rem;
+  color: var(--munay-text);
+  font-size: 0.92rem;
+}
+
+.cart-field input,
+.cart-field textarea {
+  width: 100%;
+  padding: 0.6rem 0.65rem;
+  border-radius: 12px;
+  border: 1px solid rgba(20, 58, 53, 0.18);
+  outline: none;
+  background: rgba(255,255,255,0.9);
+}
+
+.cart-field textarea {
+  resize: vertical;
+}
+
+.cart-paybtn {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  background: #009ee3; /* Mercado Pago */
+  border: none;
+  border-radius: 12px;
+  color: white;
+  cursor: pointer;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.cart-paybtn:disabled {
+  opacity: 0.75;
+  cursor: not-allowed;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .cart-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 520px) {
+  .cart-container {
+    padding: 0 1rem;
+  }
+
+  .cart-item {
+    grid-template-columns: 70px 1fr;
+    grid-template-areas:
+      "img info"
+      "subtotal subtotal";
+  }
+
+  .cart-item__img {
+    width: 70px;
+    height: 70px;
+  }
+
+  .cart-item__subtotal {
+    margin-top: 0.3rem;
+    grid-column: 1 / -1;
+    text-align: right;
+  }
+}

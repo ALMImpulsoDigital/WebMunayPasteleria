@@ -1,0 +1,78 @@
+/* src/styles/productos.css */
+
+:root {
+  --munay-teal: #2f6f67;
+  --munay-pink: #f0c8c7;
+  --munay-text: #143a35;
+  --munay-muted: rgba(20, 58, 53, 0.75);
+  --munay-surface: rgba(255, 255, 255, 0.65);
+  --munay-border: rgba(20, 58, 53, 0.12);
+}
+
+.productos-page {
+  background: var(--munay-pink);
+  padding: 2.2rem 0 3rem;
+}
+
+.productos-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.2rem;
+}
+
+.productos-header {
+  text-align: center;
+  margin-bottom: 1.2rem;
+}
+
+.productos-title {
+  margin: 0;
+  color: var(--munay-text);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: clamp(1.8rem, 3.6vw, 2.6rem);
+}
+
+.productos-subtitle {
+  margin: 0.7rem auto 0;
+  max-width: 760px;
+  color: var(--munay-muted);
+  letter-spacing: 0.04em;
+  line-height: 1.5;
+}
+
+/* GRID responsive */
+.productos-grid {
+  margin-top: 1.4rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .productos-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Mobile */
+@media (max-width: 520px) {
+  .productos-page {
+    padding: 1.6rem 0 2.4rem;
+  }
+
+  .productos-container {
+    padding: 0 1rem;
+  }
+
+  .productos-grid {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+    justify-items: center; /* ✅ centra las cards */
+  }
+
+  .productos-title {
+    letter-spacing: 0.06em;
+  }
+}

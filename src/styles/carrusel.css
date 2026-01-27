@@ -1,0 +1,93 @@
+/* src/styles/carrusel.css */
+
+.car-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: grid;
+  place-items: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.car-card {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  background: #fffdfd;
+  border-radius: 14px;
+  padding: 0.55rem 0.55rem 0.7rem;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.22);
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.car-close {
+  position: absolute;
+  top: 0.35rem;
+  right: 0.45rem;
+  background: transparent;
+  border: none;
+  font-size: 1.9rem;
+  color: #c96b84;
+  cursor: pointer;
+  z-index: 20;
+  line-height: 1;
+  text-shadow: 0 0 8px rgba(0,0,0,0.55);
+}
+
+.car-media {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.car-img {
+  width: 100%;
+  max-height: 340px;
+  object-fit: cover;
+  display: block;
+}
+
+.car-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 2.2rem;
+  cursor: pointer;
+  padding: 0 0.35rem;
+  line-height: 1;
+  text-shadow: 0 0 7px rgba(0,0,0,0.6);
+}
+
+.car-arrow--left { left: 0.35rem; }
+.car-arrow--right { right: 0.35rem; }
+
+.car-name {
+  margin: 0.45rem 0 0;
+  font-size: 0.9rem;
+  color: rgba(20, 58, 53, 0.78);
+  letter-spacing: 0.02em;
+}
+
+.car-msg {
+  margin: 0.6rem 0;
+  color: rgba(20, 58, 53, 0.78);
+}
+
+@media (max-width: 520px) {
+  .car-card {
+    max-width: 92vw;
+  }
+
+  .car-img {
+    max-height: 300px;
+  }
+
+  .car-arrow {
+    font-size: 2rem;
+  }
+}

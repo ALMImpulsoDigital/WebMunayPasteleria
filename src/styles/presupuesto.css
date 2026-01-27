@@ -1,0 +1,155 @@
+/* src/styles/presupuesto.css */
+
+:root {
+  --munay-pink: #f0c8c7;
+  --munay-surface: #fff7f9;
+  --munay-border: #f3c5cd;
+  --munay-text: #143a35;
+  --munay-muted: rgba(20, 58, 53, 0.75);
+  --munay-teal: #2f6f67;
+}
+
+.presupuesto-section {
+  background: var(--munay-pink);
+  padding: 2.2rem 0 3rem;
+}
+
+.presupuesto-section > h2,
+.presupuesto-section > p {
+  max-width: 920px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 1.2rem;
+  text-align: center;
+}
+
+.presupuesto-section > h2 {
+  margin: 0;
+  color: var(--munay-text);
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  font-size: clamp(1.8rem, 3.6vw, 2.6rem);
+}
+
+.presupuesto-section > p {
+  margin: 0.7rem auto 1.2rem;
+  color: var(--munay-muted);
+  line-height: 1.5;
+}
+
+.presupuesto-form {
+  max-width: 1020px;              /* un poquito más ancho */
+  margin: 0 auto;
+  padding: 1.35rem 1.35rem;       /* ✅ más grande el recuadro */
+  background: rgba(255,255,255,0.65);
+  border: 1px solid rgba(20, 58, 53, 0.12);
+  border-radius: 14px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+
+  box-sizing: border-box;
+  overflow: hidden;              /* ✅ por si algún pixel se quiere salir */
+
+}
+
+.presupuesto-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.9rem;
+  margin-bottom: 0.9rem;
+}
+
+.campo {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.campo label {
+  font-size: 0.92rem;
+  color: var(--munay-text);
+}
+
+.campo input,
+.campo select,
+.campo textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.65rem 0.7rem;
+  border-radius: 12px;
+  border: 1px solid rgba(20, 58, 53, 0.18);
+  outline: none;
+  background: rgba(255,255,255,0.9);
+
+}
+
+.campo textarea {
+  resize: vertical;
+}
+
+.mensaje-info {
+  margin: 0.9rem 0 0.8rem;
+  color: var(--munay-muted);
+  line-height: 1.5;
+}
+
+.mensaje-error {
+  background: rgba(255,255,255,0.65);
+  border: 1px solid rgba(200, 60, 90, 0.25);
+  color: #a52345;
+  padding: 0.8rem 1rem;
+  border-radius: 12px;
+  margin: 0.6rem 0;
+}
+
+.mensaje-exito {
+  background: rgba(255,255,255,0.65);
+  border: 1px solid rgba(47, 111, 103, 0.25);
+  color: #1e5b54;
+  padding: 0.8rem 1rem;
+  border-radius: 12px;
+  margin: 0.6rem 0;
+}
+
+.btn-enviar {
+  width: 100%;
+  margin-top: 0.6rem;
+  padding: 0.85rem 1rem;
+  border: none;
+  border-radius: 12px;
+  background: var(--munay-teal);
+  color: white;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+}
+
+.btn-enviar:disabled {
+  opacity: 0.75;
+  cursor: not-allowed;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .presupuesto-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .presupuesto-form {
+     margin: 0 1rem;
+    padding: 1.1rem;
+  }
+}
+
+@media (max-width: 520px) {
+  .presupuesto-section {
+    padding: 1.6rem 0 2.4rem;
+  }
+
+  .presupuesto-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .presupuesto-form {
+    margin: 0 1rem;
+    padding: 0.9rem;
+  }
+}
