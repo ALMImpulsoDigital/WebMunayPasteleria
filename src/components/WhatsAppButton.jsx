@@ -2,7 +2,7 @@ import "../styles/WhatsAppButton.css";
 
 export default function WhatsAppButton() {
   // 👉 Reemplazá este número por el de tu clienta (formato internacional sin + ni espacios)
-  const phone = "5493512345678";
+  const phone = "5493541587914";
 
   const message = "Hola! Tengo una consulta sobre Pastelería Munay 😊";
   const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;

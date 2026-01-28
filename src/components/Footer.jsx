@@ -1,8 +1,15 @@
 // src/components/Footer.jsx
+import { Link } from "react-router-dom";
 import "../styles/footer.css";
 
 export default function Footer() {
   const year = new Date().getFullYear();
+
+  const phone = "5493541587914";
+  const message = "Hola! Tengo una consulta sobre Pastelería Munay 😊";
+  const whatsappUrl = `https://wa.me/${phone}?text=${encodeURIComponent(
+    message,
+  )}`;
 
   return (
     <footer className="footer">
@@ -15,9 +22,12 @@ export default function Footer() {
         </div>
 
         <div className="footer__links">
-          <a href="/cookies">Cookies</a>
-          <a href="/presupuestos">Presupuestos</a>
-          <a href="/contacto">Contacto</a>
+          <Link to="/cookies">Cookies</Link>
+          <Link to="/presupuesto">Presupuestos</Link>
+
+          <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
+            Contacto
+          </a>
         </div>
 
         <p className="footer__copy">

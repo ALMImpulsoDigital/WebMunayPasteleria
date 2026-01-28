@@ -3,11 +3,14 @@
 .car-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.45);
+  background: rgba(0, 0, 0, 0.45);
   display: grid;
   place-items: center;
   z-index: 1000;
   padding: 1rem;
+
+  /* mejora en mobile cuando aparece/oculta la barra del navegador */
+  overscroll-behavior: contain;
 }
 
 .car-card {
@@ -17,7 +20,7 @@
   background: #fffdfd;
   border-radius: 14px;
   padding: 0.55rem 0.55rem 0.7rem;
-  box-shadow: 0 12px 28px rgba(0,0,0,0.22);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.22);
   text-align: center;
   box-sizing: border-box;
 }
@@ -33,22 +36,34 @@
   cursor: pointer;
   z-index: 20;
   line-height: 1;
-  text-shadow: 0 0 8px rgba(0,0,0,0.55);
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.55);
 }
 
+/* CONTENEDOR DE IMAGEN: acá está la clave para que no se "rompa" en mobile */
 .car-media {
   position: relative;
   border-radius: 12px;
   overflow: hidden;
+
+  /* altura responsiva: se adapta al alto de pantalla, con tope para desktop */
+  height: min(56vh, 360px);
+
+  /* evita layout raro si la imagen tarda en cargar */
+  background: rgba(20, 58, 53, 0.06);
 }
 
+/* IMAGEN: ocupa SIEMPRE el contenedor */
 .car-img {
   width: 100%;
-  max-height: 340px;
-  object-fit: cover;
+  height: 100%;
   display: block;
+  object-fit: cover;
+
+  /* evita “saltitos” raros */
+  max-width: 100%;
 }
 
+/* FLECHAS */
 .car-arrow {
   position: absolute;
   top: 50%;
@@ -60,11 +75,20 @@
   cursor: pointer;
   padding: 0 0.35rem;
   line-height: 1;
-  text-shadow: 0 0 7px rgba(0,0,0,0.6);
+  text-shadow: 0 0 7px rgba(0, 0, 0, 0.6);
+  z-index: 10;
+
+  /* mejora tap en mobile */
+  -webkit-tap-highlight-color: transparent;
 }
 
-.car-arrow--left { left: 0.35rem; }
-.car-arrow--right { right: 0.35rem; }
+.car-arrow--left {
+  left: 0.35rem;
+}
+
+.car-arrow--right {
+  right: 0.35rem;
+}
 
 .car-name {
   margin: 0.45rem 0 0;
@@ -78,16 +102,46 @@
   color: rgba(20, 58, 53, 0.78);
 }
 
+/* RESPONSIVE: MOBILE */
 @media (max-width: 520px) {
+  .car-overlay {
+    padding: 0.9rem;
+  }
+
   .car-card {
+    width: 100%;
     max-width: 92vw;
   }
 
-  .car-img {
-    max-height: 300px;
+  .car-media {
+    height: min(52vh, 300px);
+    border-radius: 10px;
+  }
+
+  .car-close {
+    font-size: 1.85rem;
   }
 
   .car-arrow {
     font-size: 2rem;
+  }
+
+  .car-name {
+    font-size: 0.92rem;
+  }
+}
+
+/* RESPONSIVE: MUY CHICO (teléfonos mini) */
+@media (max-width: 360px) {
+  .car-overlay {
+    padding: 0.7rem;
+  }
+
+  .car-media {
+    height: min(48vh, 260px);
+  }
+
+  .car-arrow {
+    font-size: 1.85rem;
   }
 }
