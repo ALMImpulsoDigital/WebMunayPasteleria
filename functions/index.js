@@ -23,7 +23,7 @@ exports.createPreference = functions.https.onRequest(async (req, res) => {
   // ✅ Orígenes permitidos (localhost + netlify + dominio propio)
   const allowedOrigins = [
     "http://localhost:5173",
-    "https://TU-SITIO.netlify.app",
+    "https://munay-pasteleria.netlify.app",
     "https://munay-pasteleria.com.ar",
   ];
 
@@ -67,7 +67,7 @@ exports.createPreference = functions.https.onRequest(async (req, res) => {
     // ✅ Determinar URL del front (preferimos el origin real si está permitido)
     const frontUrl = allowedOrigins.includes(origin)
       ? origin
-      : "https://TU-SITIO.netlify.app"; // fallback
+      : "https://munay-pasteleria.netlify.app";
 
     const items = pedido.items.map((item) => ({
       title: item.nombre,
