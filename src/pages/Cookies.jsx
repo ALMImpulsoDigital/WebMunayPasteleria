@@ -129,10 +129,6 @@ Ccomunicate por WhatsApp para coordinar día y horario de retiro.`,
             <h3 className="cookies-avisoTitle">Información importante</h3>
 
             <p className="cookies-avisoText">{avisoTexto}</p>
-
-            <p className="cookies-avisoSub">
-              👉 Antes de comprar, escribinos por WhatsApp para coordinar.
-            </p>
           </div>
         </div>
       )}
