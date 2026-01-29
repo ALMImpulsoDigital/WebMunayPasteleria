@@ -12,6 +12,7 @@
 .cookies-page {
   background: var(--munay-pink);
   padding: 2.2rem 0 3rem;
+  position: relative;
 }
 
 .cookies-container {
@@ -49,6 +50,54 @@
   color: var(--munay-text);
 }
 
+/* ✅ Aviso inline prolijo (2 líneas en mobile) */
+.cookies-infoInline {
+  margin: 0.65rem auto 0;
+  max-width: 760px;
+
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(20, 58, 53, 0.14);
+  border-radius: 12px;
+  padding: 0.75rem 0.95rem;
+
+  color: rgba(20, 58, 53, 0.86);
+  line-height: 1.35;
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-sizing: border-box;
+
+  display: grid;
+  gap: 0.45rem;
+  text-align: center;
+}
+
+.cookies-infoInline__row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap; /* ✅ si hace falta, baja ordenado */
+}
+
+.cookies-infoInline__icon {
+  font-size: 1.05rem;
+  flex: 0 0 auto;
+}
+
+.cookies-infoInline__text {
+  font-size: 0.95rem;
+}
+
+.cookies-infoInline__row--cta .cookies-infoInline__text {
+  opacity: 0.95;
+}
+
+/* ✅ evita que “WhatsApp” o el domicilio se partan */
+.nowrap {
+  white-space: nowrap;
+}
+
 /* GRID responsive */
 .cookies-grid {
   margin-top: 1.4rem;
@@ -82,5 +131,154 @@
 
   .cookies-title {
     letter-spacing: 0.01em;
+  }
+
+  .cookies-infoInline {
+    width: 100%;
+    max-width: 92vw;
+    padding: 0.7rem 0.85rem;
+    border-radius: 12px;
+  }
+
+  .cookies-infoInline__text {
+    font-size: 0.93rem;
+  }
+}
+
+/* ===========================
+   AVISO MODAL OBLIGATORIO
+   (RESPONSIVE / MOBILE OK)
+   =========================== */
+
+.cookies-avisoOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+
+  background: rgba(20, 58, 53, 0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+
+  /* evita “rebote” raro en mobile */
+  overscroll-behavior: contain;
+}
+
+.cookies-avisoCard {
+  position: relative;
+  width: min(680px, 94vw);
+
+  /* ✅ clave: no te rompe en pantallas bajas */
+  max-height: 82svh;
+  overflow: auto;
+
+  background: rgba(255, 255, 255, 0.96);
+  border-radius: 16px;
+  padding: 1.35rem 1.25rem 1.25rem;
+
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.35);
+  text-align: left;
+
+  box-sizing: border-box;
+}
+
+.cookies-avisoClose {
+  position: sticky;
+  top: 0.25rem;
+  margin-left: auto;
+
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 999px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(20, 58, 53, 0.16);
+  background: rgba(255, 255, 255, 0.85);
+
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #b04863;
+  cursor: pointer;
+
+  /* 🔑 CLAVE: elimina el “corrimiento” óptico */
+  line-height: 1;
+  padding: 0;
+
+  -webkit-tap-highlight-color: transparent;
+}
+
+
+.cookies-avisoTitle {
+  margin: 0.25rem 0 0.75rem;
+  font-size: 1.2rem;
+  color: var(--munay-text);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.cookies-avisoText {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: rgba(20, 58, 53, 0.92);
+
+  /* ✅ para que el salto de línea del template string se vea bien */
+  white-space: pre-line;
+}
+
+.cookies-avisoSub {
+  margin: 0.95rem 0 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: rgba(20, 58, 53, 0.78);
+  text-align: center;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(20, 58, 53, 0.12);
+}
+
+/* MOBILE FINO */
+@media (max-width: 520px) {
+  .cookies-avisoOverlay {
+    padding: 0.85rem;
+  }
+
+  .cookies-avisoCard {
+    width: 100%;
+    max-height: 84svh;
+    padding: 1.1rem 0.95rem 1rem;
+    border-radius: 14px;
+  }
+
+  .cookies-avisoTitle {
+    font-size: 1.08rem;
+    margin-bottom: 0.65rem;
+  }
+
+  .cookies-avisoText {
+    font-size: 0.98rem;
+    line-height: 1.65;
+  }
+
+  .cookies-avisoSub {
+    font-size: 0.92rem;
+  }
+}
+
+/* TELÉFONOS MUY CHICOS */
+@media (max-width: 360px) {
+  .cookies-avisoCard {
+    max-height: 86svh;
+    padding: 1rem 0.85rem 0.95rem;
+  }
+
+  .cookies-avisoText {
+    font-size: 0.95rem;
   }
 }

@@ -83,17 +83,18 @@ exports.createPreference = onRequest(
         currency_id: "ARS",
       }));
 
-      const preference = {
-        items,
-        external_reference: idPedido,
-        back_urls: {
-          success: `${frontUrl}/gracias`,
-          failure: `${frontUrl}/error-pago`,
-          pending: `${frontUrl}/pago-pendiente`,
-        },
-        // Cuando quieras, lo activamos:
-        // auto_return: "approved",
-      };
+const preference = {
+  items,
+  external_reference: idPedido,
+  back_urls: {
+    success: `${frontUrl}/gracias`,
+    failure: `${frontUrl}/error-pago`,
+    pending: `${frontUrl}/pago-pendiente`,
+  },
+  notification_url:
+    "https://mercadopagowebhook-g2ti6lyw7a-uc.a.run.app",
+};
+
 
       // 4) Crear la preferencia en MP
       const response = await mercadopago.preferences.create(preference);

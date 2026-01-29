@@ -173,7 +173,6 @@ export default function AdminPedidos() {
               <th>Fecha</th>
               <th>Cliente</th>
               <th>Contacto</th>
-              <th>Dirección</th>
               <th>Total</th>
               <th>Estado pedido</th>
               <th>Estado pago</th>
@@ -199,8 +198,6 @@ export default function AdminPedidos() {
                     <div className="muted">{p.emailCliente}</div>
                     <div className="muted">{p.telefonoCliente}</div>
                   </td>
-
-                  <td className="cell">{p.direccion}</td>
 
                   <td className="cell">
                     <span className="money">${p.total}</span>

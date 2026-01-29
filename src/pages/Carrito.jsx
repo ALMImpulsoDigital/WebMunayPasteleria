@@ -10,7 +10,6 @@ export default function Carrito() {
   const [nombreCliente, setNombreCliente] = useState("");
   const [emailCliente, setEmailCliente] = useState("");
   const [telefonoCliente, setTelefonoCliente] = useState("");
-  const [direccion, setDireccion] = useState("");
   const [notas, setNotas] = useState("");
   const [enviando, setEnviando] = useState(false);
   const [mensajeError, setMensajeError] = useState("");
@@ -24,7 +23,7 @@ export default function Carrito() {
       return;
     }
 
-    if (!nombreCliente || !emailCliente || !telefonoCliente || !direccion) {
+    if (!nombreCliente || !emailCliente || !telefonoCliente) {
       setMensajeError("Completá todos los datos obligatorios.");
       return;
     }
@@ -36,7 +35,7 @@ export default function Carrito() {
         nombreCliente,
         emailCliente,
         telefonoCliente,
-        direccion,
+
         notas,
         estado: "pendiente_pago",
         estadoPago: "pending",
@@ -185,16 +184,6 @@ export default function Carrito() {
                 type="text"
                 value={telefonoCliente}
                 onChange={(e) => setTelefonoCliente(e.target.value)}
-                required
-              />
-            </label>
-
-            <label className="cart-field">
-              <span>Dirección de entrega *</span>
-              <input
-                type="text"
-                value={direccion}
-                onChange={(e) => setDireccion(e.target.value)}
                 required
               />
             </label>
