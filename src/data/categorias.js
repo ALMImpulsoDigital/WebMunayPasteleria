@@ -32,7 +32,7 @@ export const categorias = [
   {
     id: "fechas",
     nombre: "Fechas Especiales",
-    descripcion: "Alfajores artesanales en distintos sabores y rellenos",
+    descripcion: "Opciones dulces para celebrar momentos únicos como Pascuas, Día de la Madre, Navidad y más. Ideales para regalar o compartir."
     imagen: "/assets/productos/fechas_especiales/fe1.jpeg"
   }
 ];

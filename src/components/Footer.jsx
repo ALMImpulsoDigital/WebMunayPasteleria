@@ -37,7 +37,7 @@ export default function Footer() {
           </a>
 
           <a
-            href="https://instagram.com/TU_USUARIO"
+            href="https://instagram.com/munay.pasteleria"
             target="_blank"
             rel="noopener noreferrer"
             className="footer__link"

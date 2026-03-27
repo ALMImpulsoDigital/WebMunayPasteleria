@@ -88,7 +88,7 @@
 .pascuas-btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 12px 28px rgba(47, 111, 103, 0.45);
-  background: #255a54;
+  background: #1d4540;
 }
 
 @media (max-width: 600px) {
