@@ -41,6 +41,18 @@ export default function Presupuesto() {
     }));
   };
 
+  const tipoDesdeProducto = (productoDeseado) => {
+    const p = (productoDeseado || "").toLowerCase();
+
+    if (p.includes("alfajor")) return "alfajor";
+    if (p.includes("mini pasteleria")) return "minipasteleria";
+    if (p.includes("cookies")) return "cookies";
+    if (p.includes("tarta")) return "tarta";
+    if (p.includes("budin")) return "budin";
+
+    return "presupuesto";
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setMensaje("");
@@ -74,18 +86,36 @@ export default function Presupuesto() {
 
       const fechaEventoDate = new Date(formData.fechaEvento);
 
-      await addDoc(collection(db, "presupuestos"), {
+      await addDoc(collection(db, "pedidos"), {
+        // ✅ para la columna Producto del admin
+        tipo: tipoDesdeProducto(formData.productoDeseado),
+        productoDeseado: formData.productoDeseado.trim(),
+
+        // 👤 contacto
         nombreCliente: formData.nombreCliente.trim(),
         emailCliente: formData.emailCliente.trim(),
         telefonoCliente: formData.telefonoCliente.trim(),
         tipoEvento: formData.tipoEvento.trim(),
-        productoDeseado: formData.productoDeseado.trim(), // 👈 GUARDAMOS EL PRODUCTO
         cantidadPersonas: Number(formData.cantidadPersonas),
         fechaEvento: Timestamp.fromDate(fechaEventoDate),
+
         saboresPreferidos: formData.saboresPreferidos.trim(),
         restricciones: formData.restricciones.trim(),
         descripcionPedido: formData.descripcionPedido.trim(),
-        estado: "pendiente",
+
+        // ✅ compatibilidad AdminPedidos
+        estado: "pendiente_pago",
+        estadoPago: "pending",
+        total: 0,
+        items: [
+          {
+            cantidad: 1,
+            nombre: `Presupuesto: ${formData.productoDeseado.trim()}`,
+            subtotal: 0,
+          },
+        ],
+        notas: formData.descripcionPedido.trim(), // opcional si querés verlo como notas
+
         fechaCreacion: serverTimestamp(),
       });
 
@@ -111,7 +141,7 @@ ${formData.descripcionPedido || "Sin detalles adicionales."}
 
       // Armamos la URL de WhatsApp
       const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(
-        mensaje
+        mensaje,
       )}`;
 
       // Abrimos WhatsApp en una nueva pestaña
@@ -160,7 +190,7 @@ ${formData.descripcionPedido || "Sin detalles adicionales."}
               name="nombreCliente"
               value={formData.nombreCliente}
               onChange={handleChange}
-              placeholder="Ej: Nombre y Apellido"
+              placeholder="Nombre y Apellido"
             />
           </div>
 
@@ -218,16 +248,16 @@ ${formData.descripcionPedido || "Sin detalles adicionales."}
               onChange={handleChange}
             >
               <option value="">Seleccioná un producto</option>
-              <option value="Torta personalizada">Torta personalizada</option>
-              <option value="Mesa dulce">Mesa dulce</option>
-              <option value="Cookies decoradas">Cookies decoradas</option>
-              <option value="Cupcakes decorados">Cupcakes decorados</option>
-              <option value="Mini postres / mini tartas">
-                Mini postres / mini tartas
-              </option>
+              <option value="Tartas y Postres">Tartas y Postres</option>
+              <option value="Cookies">Cookies</option>
+              <option value="Budin">Budin</option>
               <option value="Alfajores artesanales">
                 Alfajores artesanales
               </option>
+              <option value="Mini Pasteleria">Mini Pasteleria</option>
+              <option value="Huevos">Huevos de Pascua</option>
+              <option value="Desayuno">Desayuno Sorpresa</option>
+              <option value="Pan Dulce">Pan Dulce</option>
               <option value="Otro">Otro</option>
             </select>
           </div>
@@ -259,7 +289,9 @@ ${formData.descripcionPedido || "Sin detalles adicionales."}
 
         {/* DETALLES DEL PEDIDO */}
         <div className="campo">
-          <label htmlFor="saboresPreferidos">Sabores preferidos</label>
+          <label htmlFor="saboresPreferidos">
+            Sabores preferidos (opcional)
+          </label>
           <textarea
             id="saboresPreferidos"
             name="saboresPreferidos"
@@ -272,7 +304,7 @@ ${formData.descripcionPedido || "Sin detalles adicionales."}
 
         <div className="campo">
           <label htmlFor="restricciones">
-            Restricciones / alergias / preferencias especiales
+            Restricciones / alergias / preferencias especiales (opcional)
           </label>
           <textarea
             id="restricciones"
@@ -280,13 +312,13 @@ ${formData.descripcionPedido || "Sin detalles adicionales."}
             value={formData.restricciones}
             onChange={handleChange}
             rows={2}
-            placeholder="Ej: sin TACC, sin azúcar, opciones veganas…"
+            placeholder="Ej: sin nueces…"
           />
         </div>
 
         <div className="campo">
           <label htmlFor="descripcionPedido">
-            Contanos un poco más sobre lo que necesitás
+            Contanos un poco más sobre lo que necesitás (opcional)
           </label>
           <textarea
             id="descripcionPedido"
@@ -294,14 +326,12 @@ ${formData.descripcionPedido || "Sin detalles adicionales."}
             value={formData.descripcionPedido}
             onChange={handleChange}
             rows={4}
-            placeholder="Ej: Mesa dulce con torta principal, cupcakes y cookies decoradas con temática floral pastel..."
           />
         </div>
 
         <p className="mensaje-info">
-          Tu solicitud se enviará a <strong>Munay Pastelería</strong> y también
-          podrás enviarla directamente por WhatsApp para una respuesta más
-          rápida 💬✨
+          Tu solicitud se enviará a <strong>Munay Pastelería</strong>{" "}
+          directamente por WhatsApp para una respuesta más rápida 💬✨
         </p>
 
         {/* MENSAJES */}

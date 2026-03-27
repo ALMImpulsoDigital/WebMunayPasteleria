@@ -1,0 +1,128 @@
+:root {
+  --munay-text: #143a35;
+  --munay-muted: rgba(20, 58, 53, 0.75);
+  --munay-surface: rgba(255, 255, 255, 0.65);
+  --munay-border: rgba(20, 58, 53, 0.12);
+}
+
+/* Card */
+.tp-card {
+  background: transparent;
+  border: none;
+  padding: 0;
+  box-shadow: none;
+}
+
+.tp-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.8rem;
+}
+
+.tp-header--center {
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.tp-title {
+  margin: 0;
+  color: var(--munay-text);
+  font-size: 1.15rem;
+  line-height: 1.2;
+  font-weight: 900;
+}
+
+.tp-subtitle {
+  margin: 0;
+  color: var(--munay-muted);
+  font-size: 0.95rem;
+}
+
+
+
+/* Preview wrapper */
+.tp-previewWrap {
+  margin-top: 0.6rem;
+  padding: 0;
+  border: none;
+  background: transparent;
+}
+
+.tp-imgWrap {
+  display: grid;
+  place-items: center;
+}
+
+.tp-img {
+  width: 100%;
+  max-width: 340px;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  filter: drop-shadow(0 18px 22px rgba(0,0,0,0.12));
+}
+
+
+.tp-chip.ok {
+  border-color: rgba(47, 111, 103, 0.35);
+  background: rgba(47, 111, 103, 0.10);
+}
+
+.tp-sizeNote{
+  margin-top: 10px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  color: var(--munay-text);
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid var(--munay-border);
+  text-align: center;
+}
+
+.tp-notes{
+  margin-top: 10px;
+  display: grid;
+  gap: 8px;
+}
+
+.tp-note{
+  padding: 10px 12px;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  color: var(--munay-text);
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid var(--munay-border);
+  text-align: center;
+}
+
+/* ✅ Mobile: preview más chiquita para que se vean los pasos */
+@media (max-width: 900px) {
+  .tp-img {
+    max-width: 210px;   /* más chica (ajustá 200–240 según te guste) */
+  }
+
+  .tp-previewWrap {
+    margin-top: 0.35rem; /* menos separación del título */
+  }
+}
+
+/* Mobile chico */
+@media (max-width: 480px) {
+  .tp-img {
+    max-width: 200px;
+  }
+}
+
+/* ✅ Animación suave al cambiar imagen */
+.tp-img-anim {
+  animation: tpFadeSlide 220ms ease-out;
+}
+
+@keyframes tpFadeSlide {
+  from { opacity: 0; transform: translateY(6px) scale(0.99); }
+  to   { opacity: 1; transform: translateY(0)   scale(1); }
+}

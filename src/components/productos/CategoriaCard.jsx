@@ -1,15 +1,20 @@
+// src/components/productos/CategoriaCard.jsx
 import "../../styles/categoriaCard.css";
 import { NavLink } from "react-router-dom";
 
-export default function CategoriaCard({ categoria, onVerFotos }) {
+export default function CategoriaCard({ categoria, onVerFotos, esTorta }) {
+  const linkPresupuesto = esTorta ? "/presupuesto/tortas" : "/presupuesto";
+
   return (
     <article className="cat-card">
-      <img
-        className="cat-card__img"
-        src={categoria.imagen}
-        alt={categoria.nombre}
-        loading="lazy"
-      />
+      <div className="cat-card__imgWrap">
+        <img
+          className="cat-card__img"
+          src={categoria.imagen}
+          alt={categoria.nombre}
+          loading="lazy"
+        />
+      </div>
 
       <h3 className="cat-card__title">{categoria.nombre}</h3>
 
@@ -27,7 +32,7 @@ export default function CategoriaCard({ categoria, onVerFotos }) {
         </button>
 
         <NavLink
-          to="/presupuesto"
+          to={linkPresupuesto}
           className="btn-soft-link btn-soft-link--mint"
         >
           Pedir presupuesto

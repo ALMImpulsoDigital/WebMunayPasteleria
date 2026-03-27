@@ -30,8 +30,36 @@
 
 .footer__links {
   display: flex;
+  flex-direction: row; /* 👈 importante */
   gap: 1rem;
-  flex-wrap: wrap;
+  flex-wrap: wrap; /* opcional para mobile */
+  align-items: center;
+}
+
+.footer__link {
+ display: inline-flex; /* 👈 antes era flex */
+  align-items: center;
+  gap: 0.4rem;
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+}
+
+.footer__link:hover {
+  color: #fff;
+}
+
+.footer__icon {
+  width: 16px;
+  height: 16px;
+  display: flex;
+}
+
+.footer__icon svg {
+  width: 100%;
+  height: 100%;
 }
 
 .footer__links a {
@@ -50,4 +78,13 @@
   margin: 0.6rem 0 0;
   opacity: 0.75;
   font-size: 0.85rem;
+}
+
+.footer__social {
+  font-weight: 600;
+  letter-spacing: 0.1em;
+}
+
+.footer__social:hover {
+  text-decoration: underline;
 }

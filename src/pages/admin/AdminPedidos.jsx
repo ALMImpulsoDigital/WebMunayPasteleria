@@ -23,6 +23,18 @@ const ESTADOS_PEDIDO = [
   "cancelado",
 ];
 
+const etiquetaProducto = (tipo) => {
+  const map = {
+    torta: "🎂 Torta",
+    tarta: "🥧 Tarta",
+    cookies: "🍪 Cookies",
+    budin: "🍞 Budín",
+    mesadulce: "🍬 Mesa dulce",
+  };
+
+  return map[tipo] || tipo || "Producto";
+};
+
 // para mostrar más lindo
 const etiquetaEstado = (estado) => {
   const map = {
@@ -171,6 +183,7 @@ export default function AdminPedidos() {
           <thead>
             <tr>
               <th>Fecha</th>
+              <th>Producto</th>
               <th>Cliente</th>
               <th>Contacto</th>
               <th>Total</th>
@@ -190,6 +203,12 @@ export default function AdminPedidos() {
               return (
                 <tr key={p.id}>
                   <td className="cell">{fecha}</td>
+
+                  <td className="cell">
+                    <span className="pillProducto">
+                      {etiquetaProducto(p.tipo)}
+                    </span>
+                  </td>
                   <td className="cell">
                     <div className="strong">{p.nombreCliente}</div>
                   </td>
@@ -200,7 +219,7 @@ export default function AdminPedidos() {
                   </td>
 
                   <td className="cell">
-                    <span className="money">${p.total}</span>
+                    <span className="money">${Number(p.total ?? 0)}</span>
                   </td>
 
                   <td className="cell">
