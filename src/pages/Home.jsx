@@ -2,7 +2,7 @@ import "../styles/home.css";
 
 export default function Home() {
   return (
-    <main className="home">
+    <div className="home">
       {/* BLOQUE ROSA + HERO TORTAS */}
       <section className="block-pink block-pink--first">
         <div className="block-pink__inner">
@@ -32,7 +32,7 @@ export default function Home() {
       <section className="block-pink block-pink--next">
         <div className="block-pink__inner">
           <header className="cta__header">
-            <p className="cta__subtitle">TARTAS, BUDINES, ALFAJORES Y MÁS</p>
+            <h2 className="cta__subtitle">Tartas, budines, alfajores y más</h2>
           </header>
 
           <div className="hero hero--tortas">
@@ -50,6 +50,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }
