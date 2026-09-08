@@ -1,9 +1,12 @@
 // src/components/productos/CategoriaCard.jsx
+
 import "../../styles/categoriaCard.css";
 import { NavLink } from "react-router-dom";
 
 export default function CategoriaCard({ categoria, onVerFotos, esTorta }) {
   const linkPresupuesto = esTorta ? "/presupuesto/tortas" : "/presupuesto";
+
+  const esPrioritaria = categoria.prioritaria === true;
 
   return (
     <article className="cat-card">
@@ -11,8 +14,12 @@ export default function CategoriaCard({ categoria, onVerFotos, esTorta }) {
         <img
           className="cat-card__img"
           src={categoria.imagen}
-          alt={categoria.nombre}
-          loading="lazy"
+          alt={categoria.alt || categoria.nombre}
+          width={categoria.width}
+          height={categoria.height}
+          loading={esPrioritaria ? "eager" : "lazy"}
+          fetchPriority={esPrioritaria ? "high" : "auto"}
+          decoding="async"
         />
       </div>
 

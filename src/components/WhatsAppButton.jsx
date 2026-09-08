@@ -15,9 +15,12 @@ export default function WhatsAppButton() {
       rel="noopener noreferrer"
     >
       <img
-        src="/assets/icons/whatsapp.png"
         alt="WhatsApp Pastelería Munay"
         className="whatsapp-icon"
+        src="/assets/icons/whatsapp.webp"
+        width="111"
+        height="112"
+        decoding="async"
       />
       <span className="whatsapp-tooltip">¿Tenés dudas? ¡Consultá acá!</span>
     </a>
