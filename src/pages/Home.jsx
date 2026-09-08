@@ -15,6 +15,8 @@ export default function Home() {
               className="hero__img"
               src="/assets/hero-tortas.webp"
               alt="Tortas personalizadas de Munay Pastelería en Villa Carlos Paz"
+              width="1536"
+              height="1024"
               fetchPriority="high"
               decoding="async"
             />
