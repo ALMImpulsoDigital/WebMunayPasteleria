@@ -11,12 +11,12 @@ function getPasoImagen(paso, pisos) {
   const p = pisos === 2 ? 2 : 1;
 
   if (paso === 1) {
-    return `/assets/tortas/presupuesto/paso-1_base_${p === 1 ? "1-piso" : "2-pisos"}.png`;
+    return `/assets/tortas/presupuesto/paso-1_base_${p === 1 ? "1-piso" : "2-pisos"}.webp`;
   }
   if (paso === 2) {
-    return `/assets/tortas/presupuesto/paso-2_bizcochuelo_${p === 1 ? "1-piso" : "2-pisos"}.png`;
+    return `/assets/tortas/presupuesto/paso-2_bizcochuelo_${p === 1 ? "1-piso" : "2-pisos"}.webp`;
   }
-  return `/assets/tortas/presupuesto/paso-3_rellenos_${p === 1 ? "1-piso" : "2-pisos"}.png`;
+  return `/assets/tortas/presupuesto/paso-3_rellenos_${p === 1 ? "1-piso" : "2-pisos"}.webp`;
 }
 
 export default function TortaPreview({ pedido }) {
@@ -61,7 +61,7 @@ export default function TortaPreview({ pedido }) {
             src={imgSrc}
             alt="Vista previa de torta personalizada"
             width="400"
-            height="326"
+            height="400"
             fetchPriority="high"
             decoding="async"
           />
