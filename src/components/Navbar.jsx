@@ -139,8 +139,11 @@ export default function Navbar() {
         <NavLink to="/" className="nav__brand" aria-label="Munay - Inicio">
           <img
             className="nav__logo"
-            src="/assets/logo-munay.png"
+            src="/assets/logo-munay.webp"
             alt="Munay Pastelería"
+            width="360"
+            height="349"
+            decoding="async"
           />
         </NavLink>
 

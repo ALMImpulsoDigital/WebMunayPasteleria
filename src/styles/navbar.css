@@ -108,10 +108,10 @@
   }
 
   .nav__logo {
-    width: 90px;
-    height: 90px;
-    top: 6px;
-  }
+  width: 90px;
+  height: auto;
+  top: 6px;
+}
 
   .nav__link {
     font-size: var(--nav-size-mobile);

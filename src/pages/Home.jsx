@@ -13,8 +13,10 @@ export default function Home() {
           <div className="hero hero--cookies">
             <img
               className="hero__img"
-              src="/assets/hero-tortas.png"
-              alt="Tortas personalizadas"
+              src="/assets/hero-tortas.webp"
+              alt="Tortas personalizadas de Munay Pastelería en Villa Carlos Paz"
+              fetchPriority="high"
+              decoding="async"
             />
             <div className="hero__overlay" />
             <div className="hero__content">
@@ -38,8 +40,10 @@ export default function Home() {
           <div className="hero hero--tortas">
             <img
               className="hero__img"
-              src="/assets/hero-productos-varios.png"
-              alt="Productos de pastelería"
+              src="/assets/hero-productos-varios.webp"
+              alt="Tartas, budines y alfajores artesanales de Munay Pastelería"
+              loading="lazy"
+              decoding="async"
             />
             <div className="hero__overlay" />
             <div className="hero__content">
