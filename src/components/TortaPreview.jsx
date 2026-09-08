@@ -56,10 +56,14 @@ export default function TortaPreview({ pedido }) {
       <div className="tp-previewWrap">
         <div className="tp-imgWrap">
           <img
-            key={imgSrc} // ✅ fuerza re-montaje cuando cambia la imagen
+            key={imgSrc}
             className="tp-img tp-img-anim"
             src={imgSrc}
-            alt="Vista previa torta"
+            alt="Vista previa de torta personalizada"
+            width="400"
+            height="326"
+            fetchPriority="high"
+            decoding="async"
           />
         </div>
       </div>
